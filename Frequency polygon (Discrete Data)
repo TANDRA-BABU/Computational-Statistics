@@ -1,0 +1,12 @@
+#frequency polygon (Discrete Data)
+import matplotlib.pyplot as plt
+
+data = [1,2,3,4,5]
+freq = [1,2,3,2,1]
+
+plt.plot(values, freq, marker='o')
+plt.title("Frequency Polygon")
+plt.xlabel("Values")
+plt.ylabel("Frequency")
+plt.grid(True)
+plt.show()
