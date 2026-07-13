@@ -1,0 +1,11 @@
+#Semi - Logarithmic chart
+import matplotlib.pyplot as plt
+
+x = [1,2,3,4,5]
+y = [10,100,1000,10000,100000]
+
+plt.semilogy(x,y,marker ='o')
+plt.title("SEMI - LOGARITHMIC LINE CHART")
+plt.xlabel("X values")
+plt.ylabel("Log(Y)")
+plt.show()
