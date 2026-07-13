@@ -1,0 +1,19 @@
+#Multiple Bar Chart
+import matplotlib.pyplot as plt
+import numpy as np
+
+labels = ['A','B','C','D']
+x = np.arange(len(labels))
+
+data1 = [10,20,15,25]
+data2 = [12,18,17,22]
+
+width= 0.35
+
+plt.bar(x - width/2, data1, width, label='Series 1')
+plt.bar(x + width/2, data2, width, label='Series 2')
+
+plt.xticks(x, labels)
+plt.legend()
+plt.title("MULTIPLE BAR CHART")
+plt.show()
