@@ -1,0 +1,13 @@
+#Band Chart
+import matplotlib.pyplot as plt
+
+x = [1,2,3,4,5]
+lower = [10,12,15,13,17]
+upper = [15,18,20,19,22]
+
+plt.plot(x, lower)
+plt.plot(x, upper)
+plt.fill_between(x, lower, upper, alpha=0.3)
+plt.title("BAND CHART")
+
+plt.show()
