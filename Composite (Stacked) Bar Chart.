@@ -1,0 +1,15 @@
+#Composite (Stacked) Bar Chart
+import matplotlib.pyplot as plt
+
+labels = ['A','B','C','D']
+x = np.arange(len(labels))
+
+data1 = [10,20,15,25]
+data2 = [5,10,8,12]
+
+plt.bar(labels, data1)
+plt.bar(labels, data2, bottom = data1)
+
+plt.title("COMPOSITE BAR CHART")
+
+plt.show()
