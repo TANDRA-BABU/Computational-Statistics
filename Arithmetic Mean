@@ -1,0 +1,14 @@
+# Arithmetic Mean from File
+def arithmetic_mean(filename):
+    total = 0
+    count = 0
+
+    with open(filename, 'r') as file:
+        for line in file:
+            num = float(line.strip())
+            total += num
+            count += 1
+
+    return total / count
+
+print("Mean =", arithmetic_mean("data.csv"))
