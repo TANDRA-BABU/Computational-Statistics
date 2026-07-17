@@ -1,0 +1,17 @@
+# Mean (Discrete Data)
+import numpy as np
+
+data = [1,2,2,3,3,3,4,4,5]
+
+#Arithmetic Mean
+am = np.mean(data)
+
+#Geometric Mean
+gm = np.prod(data)**(1/len(data))
+
+#Harmonic mean
+hm = len(data) / sum(1/x for x in data)
+
+print("Arithmetic Mean = ", am)
+print("Geometic Mean = ", gm)
+print("Harmonic Mean = ", hm)
