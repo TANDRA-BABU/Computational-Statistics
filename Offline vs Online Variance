@@ -1,0 +1,29 @@
+# Comparison: Offline vs Online Variance
+def variance_offline_simple(data):
+    n = len(data)
+    mean = sum(data) / n
+    return sum((x - mean) ** 2 for x in data) / n
+
+
+def variance_online(data):
+    mean = 0
+    M2 = 0
+    n = 0
+
+    for x in data:
+        n += 1
+        delta = x - mean
+        mean += delta / n
+        delta2 = x - mean
+        M2 += delta * delta2
+
+    return M2 / n
+
+
+data = [10, 20, 30, 40, 50]
+
+offline_var = variance_offline_simple(data)
+online_var = variance_online(data)
+
+print("Offline Variance =", offline_var)
+print("Online Variance =", online_var)
