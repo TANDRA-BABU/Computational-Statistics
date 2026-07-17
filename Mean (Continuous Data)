@@ -1,0 +1,25 @@
+# Mean (Continuous Data)
+import numpy as np
+
+data = [12,15,17,19,21,23,25,27,29]
+bina = [10,15,20,25,30]
+
+freq, edges = np.histogram(data,bins)
+
+#midpoints
+midpoints = [(edges[i] + edges[i+1])/2 for i in range(len(freq))]
+#total frequency 
+N = sum(freq)
+
+#Arithmetic Mean
+am = sum(f*m for f,m in zip(freq,midpoints)) / N
+
+#Geometric Mean
+gm = np.prod([m**f for m,f in zip(midpoints,freq)])**(1/N)
+
+#Harmonic Mean
+hm = N/sum(f/m for f,m in zip(freq,midpoints))
+
+print("Arithmetic Mean = ", am)
+print("Geometic Mean = ", gm)
+print("Harmonic Mean = ", hm)
