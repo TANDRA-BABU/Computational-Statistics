@@ -1,0 +1,10 @@
+#Disrete Data -> Frequency
+from collections import Counter
+
+data = [1,2,2,3,3,3,4,4,5]
+
+freq = Counter(data)
+
+print("Value     Frequency")
+for key in sorted(freq):
+  print(key, "         ", freq[key])
