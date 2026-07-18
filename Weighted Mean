@@ -1,0 +1,24 @@
+import csv
+
+def weighted_mean(filename):
+    numerator = 0
+    denominator = 0
+
+    with open(filename, 'r') as file:
+        reader = csv.DictReader(file, skipinitialspace=True)
+
+        print("Detected columns:", reader.fieldnames)
+
+        for row in reader:
+            if not row['value'] or not row['weight']:
+                continue
+
+            value = float(row['value'])
+            weight = float(row['weight'])
+
+            numerator += value * weight
+            denominator += weight
+
+    return numerator / denominator
+
+print("Weighted Mean =", weighted_mean("data_weighted.csv"))
