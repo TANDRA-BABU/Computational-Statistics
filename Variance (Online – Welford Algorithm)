@@ -1,0 +1,22 @@
+# Variance (Online – Welford Algorithm)
+def variance_online(data):
+    mean = 0
+    M2 = 0
+    n = 0
+
+    for x in data:
+        n += 1
+
+        delta = x - mean
+        mean += delta / n
+        delta2 = x - mean
+
+        M2 += delta * delta2
+
+    variance = M2 / n   # population
+    return variance
+
+
+data = [10, 20, 30, 40, 50]
+
+print("Online Variance =", variance_online(data))
