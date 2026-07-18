@@ -1,0 +1,21 @@
+# Variance (Offline Method)
+def variance_offline(data):
+    n = len(data)
+
+    mean = sum(data) / n
+
+    # Population variance
+    var_population = sum((x - mean) ** 2 for x in data) / n
+
+    # Sample variance
+    var_sample = sum((x - mean) ** 2 for x in data) / (n - 1)
+
+    return var_population, var_sample
+
+
+data = [10, 20, 30, 40, 50]
+
+vp, vs = variance_offline(data)
+
+print("Population Variance =", vp)
+print("Sample Variance =", vs)
