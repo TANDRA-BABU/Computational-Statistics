@@ -1,0 +1,20 @@
+# Simple Linear Regression
+import numpy as np
+
+# Dataset
+x = np.array([1, 2, 3, 4, 5], dtype=float)
+y = np.array([2, 4, 5, 4, 5], dtype=float)
+
+# Means
+mean_x = np.mean(x)
+mean_y = np.mean(y)
+
+# Slope (b1)
+numerator = np.sum((x - mean_x) * (y - mean_y))
+denominator = np.sum((x - mean_x) ** 2)
+b1 = numerator / denominator
+
+# Intercept (b0)
+b0 = mean_y - b1 * mean_x
+
+print(f"Regression Equation: y = {b0:.4f} + {b1:.4f}x")
