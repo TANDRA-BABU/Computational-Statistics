@@ -1,0 +1,43 @@
+# Spearman Rank Correlation
+import csv
+
+def rank_data(data):
+    sorted_data = sorted((value, i) for i, value in enumerate(data))
+    ranks = [0] * len(data)
+    i = 0
+
+    while i < len(sorted_data):
+        j = i
+        while j < len(sorted_data) and sorted_data[j][0] == sorted_data[i][0]:
+            j += 1
+
+        avg_rank = (i + j + 1) / 2
+        for k in range(i, j):
+            ranks[sorted_data[k][1]] = avg_rank
+
+        i = j
+
+    return ranks
+
+
+def spearman(filename):
+    x = []
+    y = []
+
+    with open(filename, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            x.append(float(row['x']))
+            y.append(float(row['y']))
+
+    rx = rank_data(x)
+    ry = rank_data(y)
+
+    n = len(x)
+    d2 = 0
+    for i in range(n):
+        d2 += (rx[i] - ry[i]) ** 2
+
+    return 1 - (6 * d2) / (n * (n**2 - 1))
+
+print('Spearman rho =', spearman('correlation.csv'))
