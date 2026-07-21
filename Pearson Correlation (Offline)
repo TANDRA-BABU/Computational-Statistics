@@ -1,0 +1,32 @@
+# Pearson Correlation (Offline)
+import csv
+import math
+
+def pearson_correlation(filename):
+    x = []
+    y = []
+
+    with open(filename, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            x.append(float(row['x']))
+            y.append(float(row['y']))
+
+    n = len(x)
+    mean_x = sum(x) / n
+    mean_y = sum(y) / n
+
+    numerator = 0
+    sum_x = 0
+    sum_y = 0
+
+    for i in range(n):
+        dx = x[i] - mean_x
+        dy = y[i] - mean_y
+        numerator += dx * dy
+        sum_x += dx ** 2
+        sum_y += dy ** 2
+
+    return numerator / math.sqrt(sum_x * sum_y)
+
+print('Pearson r =', pearson_correlation('correlation.csv'))
