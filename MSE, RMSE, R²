@@ -1,0 +1,24 @@
+# MSE, RMSE, R²
+import numpy as np
+
+x = np.array([1, 2, 3, 4, 5], dtype=float)
+y = np.array([2, 4, 5, 4, 5], dtype=float)
+
+mean_x = np.mean(x)
+mean_y = np.mean(y)
+
+b1 = np.sum((x - mean_x) * (y - mean_y)) / np.sum((x - mean_x) ** 2)
+b0 = mean_y - b1 * mean_x
+
+y_pred = b0 + b1 * x
+
+mse = np.mean((y - y_pred) ** 2)
+rmse = np.sqrt(mse)
+
+ss_total = np.sum((y - mean_y) ** 2)
+ss_residual = np.sum((y - y_pred) ** 2)
+r2 = 1 - ss_residual / ss_total
+
+print("MSE  =", mse)
+print("RMSE =", rmse)
+print("R²   =", r2)
