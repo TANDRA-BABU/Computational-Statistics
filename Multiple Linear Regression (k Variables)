@@ -1,0 +1,22 @@
+# Multiple Linear Regression (k Variables)
+import numpy as np
+
+# Independent variables (3 features)
+X = np.array([
+    [1, 2, 3],
+    [2, 1, 4],
+    [3, 4, 5],
+    [4, 3, 6],
+    [5, 5, 7]
+], dtype=float)
+
+# Dependent variable
+y = np.array([15, 16, 28, 30, 40], dtype=float)
+
+X = np.column_stack((np.ones(len(X)), X))
+
+beta = np.linalg.pinv(X) @ y
+
+print("Regression Coefficients:")
+for i, coeff in enumerate(beta):
+    print(f"b{i} = {coeff:.4f}")
