@@ -1,0 +1,29 @@
+# Pearson Correlation (Online)
+import csv
+import math
+
+def online_pearson(filename):
+    n = 0
+    mean_x = mean_y = 0
+    C = Sx = Sy = 0
+
+    with open(filename, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            x = float(row['x'])
+            y = float(row['y'])
+            n += 1
+
+            dx = x - mean_x
+            mean_x += dx / n
+
+            dy = y - mean_y
+            mean_y += dy / n
+
+            C += dx * (y - mean_y)
+            Sx += dx * (x - mean_x)
+            Sy += dy * (y - mean_y)
+
+    return C / math.sqrt(Sx * Sy)
+
+print('Online Pearson r =', online_pearson('correlation.csv'))
