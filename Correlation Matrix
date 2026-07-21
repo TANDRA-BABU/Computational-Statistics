@@ -1,0 +1,31 @@
+# Correlation Matrix
+import pandas as pd
+
+def correlation_matrix(filename):
+    # Read the file as-is
+    df = pd.read_csv(filename)
+
+    # If all data is in one column, split it manually
+    if len(df.columns) == 1:
+        # Split header
+        new_columns = df.columns[0].split(',')
+
+        # Split each row
+        df = df.iloc[:, 0].str.split(',', expand=True)
+
+        # Assign proper column names
+        df.columns = new_columns
+
+    # Convert all columns to numeric
+    df = df.apply(pd.to_numeric)
+
+    print("Data:")
+    print(df)
+
+    print("\nColumns:")
+    print(df.columns)
+
+    print("\nCorrelation Matrix:")
+    print(df.corr())
+
+correlation_matrix("multivariate.csv")
