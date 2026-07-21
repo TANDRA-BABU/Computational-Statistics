@@ -1,0 +1,25 @@
+# Comparison with scikit-learn
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+X = np.array([[1], [2], [3], [4], [5]], dtype=float)
+y = np.array([2, 4, 5, 4, 5], dtype=float)
+
+# Manual calculation
+mean_x = np.mean(X.flatten())
+mean_y = np.mean(y)
+
+b1 = np.sum((X.flatten() - mean_x) * (y - mean_y)) / np.sum((X.flatten() - mean_x) ** 2)
+b0 = mean_y - b1 * mean_x
+
+print("Manual:")
+print("Intercept =", b0)
+print("Slope     =", b1)
+
+# scikit-learn
+model = LinearRegression()
+model.fit(X, y)
+
+print("\nscikit-learn:")
+print("Intercept =", model.intercept_)
+print("Slope     =", model.coef_[0])
